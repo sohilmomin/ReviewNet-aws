@@ -58,7 +58,7 @@ export const updateReview = (review) => ({
 
 export const postLike = (reviewId) => (dispatch) => {
     console.log(localStorage.getItem('jwt'))
-    return fetch(baseUrl+'reviews/likes/' + reviewId, {
+    return fetch(baseUrl+'/reviews/likes/' + reviewId, {
         method: 'PUT',
         headers: {
             "Authorization": "Bearer " + localStorage.getItem('jwt'),
@@ -90,7 +90,7 @@ export const postLike = (reviewId) => (dispatch) => {
 
 
 export const postDislike = (reviewId) => (dispatch) => {
-    return fetch(baseUrl+'reviews/dislikes/' + reviewId, {
+    return fetch(baseUrl+'/reviews/dislikes/' + reviewId, {
         method: 'PUT',
         headers: {
             "Authorization": "Bearer " + localStorage.getItem('jwt'),
@@ -128,7 +128,7 @@ export const postReview = (rating, tags, review, product) => (dispatch) => {
         product
     }
     console.log(newReview);
-    return fetch(baseUrl+'reviews', {
+    return fetch(baseUrl+'/reviews', {
         method: 'POST',
         body: JSON.stringify(newReview),
         headers: {
@@ -169,7 +169,7 @@ export const editReview = (reviewId, rating, tags, review, product) => (dispatch
         product
     }
     console.log(newReview);
-    return fetch(baseUrl+'reviews/' + reviewId, {
+    return fetch(baseUrl+'/reviews/' + reviewId, {
         method: 'PUT',
         body: JSON.stringify(newReview),
         headers: {
@@ -203,7 +203,7 @@ export const editReview = (reviewId, rating, tags, review, product) => (dispatch
 }
 export const deleteReview = (reviewId) => (dispatch) => {
     console.log(localStorage.getItem('jwt'))
-    return fetch(baseUrl+'reviews/' + reviewId, {
+    return fetch(baseUrl+'/reviews/' + reviewId, {
         method: 'DELETE',
         headers: {
             "Authorization": "Bearer " + localStorage.getItem('jwt'),
@@ -308,7 +308,7 @@ export const postProduct = (productName, price, catogery, subCatogery, descripti
             newProduct.pic = data.url
         })
         .then(data => {
-            fetch(baseUrl+'products', {
+            fetch(baseUrl+'/products', {
                 method: 'POST',
                 body: JSON.stringify(newProduct),
                 headers: {
@@ -363,7 +363,7 @@ export const editProduct = (productId, productName, price, catogery, subCatogery
             newProduct.pic = data.url
         })
         .then(data => {
-            fetch(baseUrl+'products/' + productId, {
+            fetch(baseUrl+'/products/' + productId, {
                 method: 'PUT',
                 body: JSON.stringify(newProduct),
                 headers: {
@@ -399,7 +399,7 @@ export const editProduct = (productId, productName, price, catogery, subCatogery
 
 export const deleteProduct = (productId) => (dispatch) => {
     console.log(localStorage.getItem('jwt'))
-    return fetch(baseUrl+'products/' + productId, {
+    return fetch(baseUrl+'/products/' + productId, {
         method: 'DELETE',
         headers: {
             "Authorization": "Bearer " + localStorage.getItem('jwt'),
@@ -444,7 +444,7 @@ export const signUp = (name, email, password, fullname) => (dispatch) => {
         password,
         fullname
     }
-    return fetch(baseUrl+'users/signup', {
+    return fetch(baseUrl+'/users/signup', {
         method: "POST",
         headers: {
             "Content-Type": "Application/json"
@@ -480,7 +480,7 @@ export const signIn = (email, password) => (dispatch) => {
         password
     }
     console.log('reached at actionCreater' + loginUser)
-    return fetch(baseUrl+'users/signin', {
+    return fetch(baseUrl+'/users/signin', {
         method: "POST",
         headers: {
             "Content-Type": "Application/json"
@@ -514,7 +514,7 @@ export const signIn = (email, password) => (dispatch) => {
         })
 }
 export const fetchUser = () => (dispatch) => {
-    return fetch(baseUrl+'users/userdata', {
+    return fetch(baseUrl+'/users/userdata', {
         method: "GET",
         headers: {
             "Content-Type": "Application/json",
@@ -577,7 +577,7 @@ export const clearCompany = () => ({
 })
 
 export const fetchCompany = () => (dispatch) => {
-    return fetch(baseUrl+'company/companydata', {
+    return fetch(baseUrl+'/company/companydata', {
         method: "GET",
         headers: {
             "Content-Type": "Application/json",
